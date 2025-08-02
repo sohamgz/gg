@@ -1,5 +1,7 @@
 # GEMS Backend API Documentation
 
+This API serves the GEMS Task Manager frontend deployed at: [https://gg-alpha-fawn.vercel.app/](https://gg-alpha-fawn.vercel.app/)
+
 ## Base URLs
 
 ### Development (Local)
@@ -9,14 +11,18 @@ http://localhost:5000/api
 
 ### Production (Render)
 ```
-https://gems-backend-whsr.onrender.com
+https://gems-backend-whsr.onrender.com/api
 ```
 
 ## Authentication
 All protected endpoints require a Bearer token in the Authorization header:
 ```
-Authorization: Bearer <jwt_token>
+Authorization: Bearer <your_jwt_token>
 ```
+
+**Note**: Replace `<your_jwt_token>` with the actual JWT token received from login/register endpoints.
+
+**Server Response Time**: Due to free tier deployment, registration and login requests may take 15-20 seconds to respond. This is normal behavior.
 
 ## Error Responses
 All endpoints may return the following error responses:
@@ -100,7 +106,7 @@ Get a list of all users (password field excluded).
 
 **Headers:**
 ```
-Authorization: Bearer <token>
+Authorization: Bearer <your_jwt_token>
 ```
 
 **Success Response (200):**
@@ -129,7 +135,7 @@ Get a specific user by ID (password field excluded).
 
 **Headers:**
 ```
-Authorization: Bearer <token>
+Authorization: Bearer <your_jwt_token>
 ```
 
 **Success Response (200):**
@@ -157,7 +163,7 @@ Update user information.
 
 **Headers:**
 ```
-Authorization: Bearer <token>
+Authorization: Bearer <your_jwt_token>
 ```
 
 **Request Body:**
@@ -196,7 +202,7 @@ Create a new task.
 
 **Headers:**
 ```
-Authorization: Bearer <token>
+Authorization: Bearer <your_jwt_token>
 ```
 
 **Request Body:**
@@ -237,7 +243,7 @@ Get all tasks for the authenticated user.
 
 **Headers:**
 ```
-Authorization: Bearer <token>
+Authorization: Bearer <your_jwt_token>
 ```
 
 **Success Response (200):**
@@ -269,7 +275,7 @@ Get a specific task by ID (only if owned by authenticated user).
 
 **Headers:**
 ```
-Authorization: Bearer <token>
+Authorization: Bearer <your_jwt_token>
 ```
 
 **Success Response (200):**
@@ -300,7 +306,7 @@ Update a specific task (only if owned by authenticated user).
 
 **Headers:**
 ```
-Authorization: Bearer <token>
+Authorization: Bearer <your_jwt_token>
 ```
 
 **Request Body:**
@@ -341,7 +347,7 @@ Delete a specific task (only if owned by authenticated user).
 
 **Headers:**
 ```
-Authorization: Bearer <token>
+Authorization: Bearer <your_jwt_token>
 ```
 
 **Success Response (200):**
@@ -423,5 +429,4 @@ PORT=5000
 - Email validation uses regex pattern: `/^\S+@\S+\.\S+$/`
 - All timestamps are automatically managed by Mongoose
 - Tasks are user-scoped - users can only access their own tasks
-
 - The `assignedUser` field in tasks is optional and references a User ID 
