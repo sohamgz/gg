@@ -15,7 +15,7 @@ https://gems-backend-whsr.onrender.com
 ## Authentication
 All protected endpoints require a Bearer token in the Authorization header:
 ```
-Authorization: Bearer node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+Authorization: Bearer <jwt_token>
 ```
 
 ## Error Responses
@@ -423,4 +423,5 @@ PORT=5000
 - Email validation uses regex pattern: `/^\S+@\S+\.\S+$/`
 - All timestamps are automatically managed by Mongoose
 - Tasks are user-scoped - users can only access their own tasks
+
 - The `assignedUser` field in tasks is optional and references a User ID 
